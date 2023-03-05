@@ -130,7 +130,7 @@ resource "aws_iam_instance_profile" "profile" {
 
 resource "aws_instance" "instance1" {
   ami                    = lookup(var.ami, var.region)
-  instance_type          = "t2.micro"
+  instance_type          = length(var.instance_type) == 0 ? "t2.micro" : var.instance_type[0]
   vpc_security_group_ids = [aws_security_group.allow-ssh.id]
   subnet_id              = aws_subnet.public_subnet.id
   key_name               = aws_key_pair.first_key.key_name
@@ -142,7 +142,7 @@ resource "aws_instance" "instance1" {
 
 resource "aws_instance" "instance2" {
   ami                    = lookup(var.ami, var.region)
-  instance_type          = "t2.micro"
+  instance_type          = length(var.instance_type) == 0 ? "t2.micro" : var.instance_type[0]
   vpc_security_group_ids = [aws_security_group.allow-ssh.id]
   iam_instance_profile   = aws_iam_instance_profile.profile.name
   subnet_id              = aws_subnet.private_subnet.id
