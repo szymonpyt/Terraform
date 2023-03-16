@@ -7,7 +7,7 @@ variable "instance_type" {
   default = []
 }
 
-variable "vpc_cidr"{
+variable "vpc_cidr" {
   type    = string
   default = "172.30.0.0/21"
 }
@@ -23,7 +23,7 @@ variable "private_cidr" {
 }
 
 variable "ami" {
-  type    = map(string)
+  type = map(string)
   default = {
     us-east-1 = "ami-03dd1011b2501fbfd"
   }

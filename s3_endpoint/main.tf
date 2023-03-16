@@ -48,7 +48,7 @@ resource "aws_route_table_association" "pub" {
 resource "aws_route_table" "private_rt" {
   vpc_id = aws_vpc.vpc.id
   tags = {
-   Name = "private_rt"
+    Name = "private_rt"
   }
 }
 
@@ -97,13 +97,13 @@ resource "aws_security_group" "allow-ssh" {
 }
 
 resource "aws_vpc_endpoint" "s3" {
- vpc_id       = aws_vpc.vpc.id
- service_name = "com.amazonaws.us-east-2.s3"
+  vpc_id       = aws_vpc.vpc.id
+  service_name = "com.amazonaws.us-east-2.s3"
 }
 
 resource "aws_vpc_endpoint_route_table_association" "rta" {
   route_table_id  = aws_route_table.private_rt.id
-  vpc_endpoint_id = aws_vpc_endpoint.s3.id 
+  vpc_endpoint_id = aws_vpc_endpoint.s3.id
 }
 
 resource "aws_iam_role" "ec2_s3_access_role" {
