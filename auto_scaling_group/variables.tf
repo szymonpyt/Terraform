@@ -9,8 +9,8 @@ variable "ami" {
 }
 
 variable "instance_types" {
-   type    = list(any)
-   default = []
+  type    = list(any)
+  default = []
 }
 
 variable "key" {
